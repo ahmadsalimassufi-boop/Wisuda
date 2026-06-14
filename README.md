@@ -3,64 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Sayangku ❤️</title>
+<title>Untuk Bochillkuu Tersayang ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
 <style>
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
+    font-family:'Poppins',sans-serif;
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
     background:
-    radial-gradient(circle at top left,#ff6b9d,transparent 40%),
-    radial-gradient(circle at bottom right,#a855f7,transparent 40%),
+    radial-gradient(circle at top left,#ff6b9d55,transparent 35%),
+    radial-gradient(circle at bottom right,#a855f755,transparent 35%),
     #0f172a;
 }
 
 /* Partikel */
-.particles{
+#particles{
     position:fixed;
     inset:0;
-    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
 }
 
-/* Tombol amplop */
+.particle{
+    position:absolute;
+    opacity:0.18;
+    pointer-events:none;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+/* Amplop */
 .envelope{
-    width:240px;
-    height:240px;
+    z-index:10;
+    width:260px;
+    height:260px;
     border:none;
-    border-radius:35px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter:blur(20px);
-    color:white;
     cursor:pointer;
+    border-radius:35px;
+    color:white;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    box-shadow:0 0 50px rgba(255,105,180,.25);
     display:flex;
     flex-direction:column;
-    align-items:center;
     justify-content:center;
-    gap:12px;
-    font-size:80px;
-    box-shadow:0 0 40px rgba(255,255,255,.15);
+    align-items:center;
     transition:.4s;
-    z-index:10;
 }
 
 .envelope:hover{
-    transform:translateY(-10px) scale(1.05);
-    box-shadow:0 0 60px rgba(255,182,193,.5);
+    transform:scale(1.05);
 }
 
-.envelope span{
+.envelope .icon{
+    font-size:85px;
+}
+
+.envelope .text{
+    margin-top:10px;
     font-size:18px;
     font-weight:600;
 }
@@ -68,25 +87,26 @@ body{
 /* Surat */
 .card{
     display:none;
-    width:90%;
+    position:relative;
+    z-index:10;
+    width:92%;
     max-width:850px;
     max-height:85vh;
     overflow-y:auto;
     padding:40px;
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,0.15);
     border-radius:30px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,0.15);
     color:white;
-    box-shadow:0 20px 50px rgba(0,0,0,.3);
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
     animation:showCard 1s ease;
-    z-index:10;
 }
 
 @keyframes showCard{
     from{
         opacity:0;
-        transform:translateY(40px) scale(.9);
+        transform:translateY(30px) scale(.95);
     }
     to{
         opacity:1;
@@ -96,43 +116,51 @@ body{
 
 h1{
     text-align:center;
+    font-family:'Playfair Display',serif;
     margin-bottom:10px;
+    font-size:38px;
 }
 
 .date{
     text-align:center;
     opacity:.8;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .love{
     text-align:center;
-    font-size:60px;
+    font-size:55px;
     margin-bottom:20px;
-    animation:beat 1.2s infinite;
+    animation:beat 1.3s infinite;
 }
 
 @keyframes beat{
     50%{
-        transform:scale(1.2);
+        transform:scale(1.15);
     }
 }
 
 p{
-    line-height:1.9;
+    line-height:2;
     margin-bottom:18px;
     font-size:17px;
+    color:#f8fafc;
 }
 
 .footer{
+    margin-top:30px;
     text-align:center;
-    margin-top:25px;
+    color:#ffc0cb;
     font-size:20px;
     font-weight:600;
-    color:#ffc0cb;
 }
 
-/* Scrollbar */
+.signature{
+    margin-top:15px;
+    text-align:center;
+    font-size:28px;
+}
+
 ::-webkit-scrollbar{
     width:6px;
 }
@@ -145,114 +173,90 @@ p{
 
 <body>
 
-<div class="particles"></div>
+<div id="particles"></div>
 
-<button id="openBtn" class="envelope">
-    💌
-    <span>Tekan Disini Ya Sayang ❤️</span>
+<button class="envelope" id="openBtn">
+    <div class="icon">💌</div>
+    <div class="text">Tekan Disini Ya Sayang ❤️</div>
 </button>
 
 <div class="card" id="card">
 
-    <h1>🎓 Selamat Wisuda Sayangku Tercinta 🎓</h1>
+<h1>🎓 Selamat Wisuda Sayangku 🎓</h1>
 
-    <div class="date">
-        15 Juni 2026 ❤️
-    </div>
+<div class="date">
+15 Juni 2026 ❤️
+</div>
 
-    <div class="love">💖</div>
+<div class="love">💖</div>
 
-    <p>
-        Hari ini adalah hari yang sangat istimewa.
-        Setelah begitu banyak perjuangan, doa, air mata,
-        dan senyum yang kamu lalui,
-        akhirnya kamu berhasil sampai di titik yang indah ini.
-    </p>
+<p>
+Hari ini adalah hari yang sangat spesial. Setelah semua perjuangan, tugas, ujian, rasa lelah, doa, dan air mata yang pernah kamu lewati, akhirnya kamu berhasil sampai di titik ini.
+</p>
 
-    <p>
-        Aku bangga sekali padamu.
-        Bukan hanya karena gelar yang kamu raih,
-        tetapi karena kerja keras, ketekunan,
-        dan semangatmu yang tidak pernah menyerah.
-    </p>
+<p>
+Aku ingin kamu tahu bahwa aku bangga sekali padamu. Bukan hanya karena kamu berhasil wisuda, tetapi karena aku tahu betapa kerasnya perjuangan yang kamu lakukan untuk sampai di sini.
+</p>
 
-    <p>
-        Terima kasih karena selalu berjuang,
-        bahkan ketika keadaan terasa berat.
-        Terima kasih karena sudah menjadi pribadi yang kuat,
-        hebat, dan menginspirasi.
-    </p>
+<p>
+Terima kasih karena selalu kuat ketika keadaan tidak mudah. Terima kasih karena tidak menyerah meskipun banyak hal yang mungkin membuatmu lelah.
+</p>
 
-    <p>
-        Semoga setelah wisuda ini,
-        semua impian yang kamu simpan perlahan menjadi kenyataan.
-        Semoga setiap langkahmu dipenuhi keberkahan,
-        kebahagiaan, kesehatan, dan kesuksesan.
-    </p>
+<p>
+Semoga setelah hari ini, semua mimpi yang kamu simpan perlahan menjadi kenyataan. Semoga setiap langkahmu dipenuhi kebahagiaan, keberuntungan, kesehatan, dan keberkahan yang tidak ada habisnya.
+</p>
 
-    <p>
-        Jangan pernah meragukan dirimu sendiri.
-        Kamu jauh lebih hebat daripada yang kamu pikirkan.
-        Aku akan selalu mendukungmu dan bangga padamu.
-    </p>
+<p>
+Jangan pernah meragukan dirimu sendiri ya sayang. Kamu jauh lebih hebat daripada yang kamu bayangkan. Aku percaya kamu bisa mencapai hal-hal besar di masa depan.
+</p>
 
-    <p>
-        Selamat wisuda sayangku ❤️
-        Hari ini dunia melihat keberhasilanmu,
-        dan aku melihat alasan lain untuk semakin bangga mencintaimu.
-    </p>
+<p>
+Selamat wisuda bochillkuu tersayanggg ❤️. Hari ini dunia melihat keberhasilanmu, dan aku melihat alasan lain untuk semakin bangga mencintaimu.
+</p>
 
-    <div class="footer">
-        Dengan penuh cinta ❤️<br>
-        Untuk Sayangku Tercinta 💕
-    </div>
+<div class="footer">
+💌 DARI AUFI UNTUK BOCHILLKUUUU TERSAYANGG 💌
+</div>
+
+<div class="signature">
+💕 Aku Bangga Padamu Selalu 💕
+</div>
 
 </div>
 
 <script>
 // Buka surat
-const btn = document.getElementById("openBtn");
+const openBtn = document.getElementById("openBtn");
 const card = document.getElementById("card");
 
-btn.addEventListener("click",()=>{
-    btn.style.display="none";
-    card.style.display="block";
-});
+openBtn.onclick = () => {
+    openBtn.style.display = "none";
+    card.style.display = "block";
+};
 
-// Partikel hati & bintang
-setInterval(()=>{
-    const p=document.createElement("div");
+// Partikel estetik (jarang agar tidak menutupi tulisan)
+const particles = document.getElementById("particles");
 
-    const icons=[
-        "❤️","💕","💖","💗","💓",
-        "💞","✨","⭐"
-    ];
+setInterval(() => {
 
-    p.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+    const p = document.createElement("div");
 
-    p.style.position="fixed";
-    p.style.left=Math.random()*100+"vw";
-    p.style.top="-20px";
-    p.style.fontSize=(Math.random()*18+12)+"px";
-    p.style.pointerEvents="none";
-    p.style.zIndex="1";
+    const icons = ["❤️","💕","💖","✨"];
 
-    document.body.appendChild(p);
+    p.className = "particle";
+    p.innerHTML = icons[Math.floor(Math.random()*icons.length)];
 
-    let pos=-20;
+    p.style.left = Math.random()*100 + "vw";
+    p.style.fontSize = (12 + Math.random()*10) + "px";
+    p.style.animationDuration = (8 + Math.random()*6) + "s";
 
-    const anim=setInterval(()=>{
-        pos+=2;
-        p.style.top=pos+"px";
-        p.style.opacity=1-(pos/window.innerHeight);
+    particles.appendChild(p);
 
-        if(pos>window.innerHeight){
-            clearInterval(anim);
-            p.remove();
-        }
-    },20);
+    setTimeout(() => {
+        p.remove();
+    }, 15000);
 
-},150);
+}, 700);
 </script>
 
 </body>
